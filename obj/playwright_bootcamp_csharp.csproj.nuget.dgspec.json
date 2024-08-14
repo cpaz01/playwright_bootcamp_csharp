@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\PlaywrightBootcampGitHubRepositories\\playwright_bootcamp_csharp\\playwright_bootcamp_csharp.csproj": {}
+  },
+  "projects": {
+    "C:\\PlaywrightBootcampGitHubRepositories\\playwright_bootcamp_csharp\\playwright_bootcamp_csharp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\PlaywrightBootcampGitHubRepositories\\playwright_bootcamp_csharp\\playwright_bootcamp_csharp.csproj",
+        "projectName": "playwright_bootcamp_csharp",
+        "projectPath": "C:\\PlaywrightBootcampGitHubRepositories\\playwright_bootcamp_csharp\\playwright_bootcamp_csharp.csproj",
+        "packagesPath": "C:\\Users\\LR585DG\\.nuget\\packages\\",
+        "outputPath": "C:\\PlaywrightBootcampGitHubRepositories\\playwright_bootcamp_csharp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LR585DG\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/workflow/": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "Microsoft.Playwright.NUnit": {
+              "target": "Package",
+              "version": "[1.46.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
