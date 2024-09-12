@@ -1,0 +1,53 @@
+name: CI for Playwright C# project
+
+# Definir cuándo ejecutar el workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Instalar .NET Core SDK
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.x' # Usar la versión adecuada de .NET
+
+      # Instalar dependencias de Playwright
+      - name: Install Playwright dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxrandr2 libxkbcommon0 libxcomposite1 libxdamage1 libxshmfence1 libgbm1
+
+      # Restaurar dependencias de NuGet
+      - name: Restore NuGet packages
+        run: dotnet restore
+
+      # Compilar el proyecto
+      - name: Build the project
+        run: dotnet build --configuration Release --no-restore
+
+      # Instalar navegadores de Playwright
+      - name: Install Playwright Browsers
+        run: dotnet tool install --global Microsoft.Playwright.CLI
+        env:
+          DOTNET_ROOT: /home/runner/.dotnet
+      - name: Install Playwright browsers
+        run: playwright install
+        env:
+          DOTNET_ROOT: /home/runner/.dotnet
+
+      # Ejecutar las pruebas
+      - name: Run Playwright tests
+        run: dotnet test --configuration Release --no-build
