@@ -39,7 +39,7 @@ jobs:
 
       # Instalar navegadores de Playwright usando dotnet
       - name: Install Playwright browsers
-        run: dotnet playwright install
+        run: playwright install
         env:
           DOTNET_ROOT: /home/runner/.dotnet
 
