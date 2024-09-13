@@ -30,6 +30,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxrandr2 libxkbcommon0 libxcomposite1 libxdamage1 libxshmfence1 libgbm1
 
+      # Instalar navegadores de Playwright
+      - name: Install Playwright CLI
+        run: dotnet tool install --global Microsoft.Playwright.CLI
+        env:
+          DOTNET_ROOT: /home/runner/.dotnet
+
       # Restaurar dependencias de NuGet
       - name: Restore NuGet packages
         run: dotnet restore
@@ -37,12 +43,6 @@ jobs:
       # Compilar el proyecto
       - name: Build the project
         run: dotnet build --configuration Release --no-restore
-
-      # Instalar navegadores de Playwright
-      - name: Install Playwright CLI
-        run: dotnet tool install --global Microsoft.Playwright.CLI
-        env:
-          DOTNET_ROOT: /home/runner/.dotnet
       
       - name: Install Playwright browsers
         run: playwright install
