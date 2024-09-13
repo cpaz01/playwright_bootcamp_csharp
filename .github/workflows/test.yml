@@ -1,6 +1,5 @@
 name: CI for Playwright C# project
 
-# Definir cuándo ejecutar el workflow
 on:
   push:
     branches:
@@ -32,20 +31,15 @@ jobs:
       - name: Build the project
         run: dotnet build --configuration Release --no-restore
 
-      # Instalar dependencias de Playwright
-      - name: Install Playwright dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxrandr2 libxkbcommon0 libxcomposite1 libxdamage1 libxshmfence1 libgbm1
-
-      # Instalar navegadores de Playwright
+      # Instalar Playwright CLI
       - name: Install Playwright CLI
         run: dotnet tool install --global Microsoft.Playwright.CLI
         env:
           DOTNET_ROOT: /home/runner/.dotnet
-      
+
+      # Instalar navegadores de Playwright usando dotnet
       - name: Install Playwright browsers
-        run: playwright install chromium
+        run: dotnet playwright install
         env:
           DOTNET_ROOT: /home/runner/.dotnet
 
