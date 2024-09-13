@@ -39,7 +39,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       # Instalar navegadores de Playwright
-      - name: Install Playwright Browsers
+      - name: Install Playwright CLI
         run: dotnet tool install --global Microsoft.Playwright.CLI
         env:
           DOTNET_ROOT: /home/runner/.dotnet
