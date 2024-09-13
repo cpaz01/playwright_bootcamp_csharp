@@ -1,4 +1,4 @@
-name: CI for Playwright C# project
+name: Playwright Tests
 
 on:
   push:
@@ -13,36 +13,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      # Instalar .NET Core SDK
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v2
+      - name: Set up .NET 8.x
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.x' # Usar la versión adecuada de .NET
+          dotnet-version: '8.x'
 
-      # Restaurar dependencias de NuGet
-      - name: Restore NuGet packages
+      - name: Install dependencies
         run: dotnet restore
 
-      # Compilar el proyecto
       - name: Build the project
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build --no-restore --configuration Release
 
-      # Instalar Playwright CLI
-      - name: Install Playwright CLI
-        run: dotnet tool install --global Microsoft.Playwright.CLI
-        env:
-          DOTNET_ROOT: /home/runner/.dotnet
+      - name: Install Playwright Browsers
+        run: npx playwright install
 
-      # Instalar navegadores de Playwright usando dotnet
-      - name: Install Playwright browsers
-        run: playwright install
-        env:
-          DOTNET_ROOT: /home/runner/.dotnet
-
-      # Ejecutar las pruebas
       - name: Run Playwright tests
-        run: dotnet test --configuration Release --no-build
+        run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Test Results
+          path: test_results.trx
