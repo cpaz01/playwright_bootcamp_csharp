@@ -45,7 +45,7 @@ jobs:
           DOTNET_ROOT: /home/runner/.dotnet
       
       - name: Install Playwright browsers
-        run: playwright install
+        run: playwright install chromium
         env:
           DOTNET_ROOT: /home/runner/.dotnet
 
