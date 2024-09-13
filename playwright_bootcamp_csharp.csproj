@@ -7,9 +7,7 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
 
-  <PropertyGroup>
     <PlaywrightPlatform>all</PlaywrightPlatform>
   </PropertyGroup>
 
