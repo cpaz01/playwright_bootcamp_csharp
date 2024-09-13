@@ -31,7 +31,7 @@ jobs:
         run: npx playwright install
 
       - name: Run Playwright tests
-        run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=TestResults/test_results.trx"
+        run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
 
       - name: Upload test results
         uses: actions/upload-artifact@v3
