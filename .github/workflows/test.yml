@@ -22,7 +22,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '7.x' # Usar la versión adecuada de .NET
+          dotnet-version: '8.x' # Usar la versión adecuada de .NET
 
       # Instalar dependencias de Playwright
       - name: Install Playwright dependencies
